@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Interview</string>
+    <string name="lifecycle_lab_hint">Filter Logcat by tag: LifecycleLab — then use the buttons below.</string>
+    <string name="lifecycle_btn_replace_a">Replace with A (no back stack)</string>
+    <string name="lifecycle_btn_replace_b">Replace with B (no back stack)</string>
+    <string name="lifecycle_btn_push_a">Replace with A + addToBackStack</string>
+    <string name="lifecycle_btn_push_b">Replace with B + addToBackStack</string>
+    <string name="lifecycle_btn_pop">Pop back stack (if any)</string>
+    <string name="lifecycle_btn_add_hide">Add B on top, hide current (addToBackStack)</string>
+    <string name="lifecycle_btn_second_activity">Start SecondLifecycleActivity</string>
+    <string name="second_lifecycle_hint">Second activity — same Logcat tag LifecycleLab. Press system Back to return.</string>
+    <string name="main_open_lifecycle_lab">Open Activity &amp; Fragment lifecycle lab</string>
+    <string name="main_open_recycler_lab">RecyclerView performance lab</string>
+    <string name="main_open_compose_lab">Jetpack Compose lab</string>
+    <string name="main_open_pulse_news">Pulse News</string>
+    <string name="main_open_coin_watch">Coin Watch</string>
+
+    <string name="compose_lab_title">Compose lab</string>
+    <string name="compose_lab_intro">NavHost + Material3 theme + ViewModel. Open the state screen to compare StateFlow (collectAsStateWithLifecycle) with LiveData (observeAsState).</string>
+    <string name="compose_lab_open_state">Open state &amp; Flow sandbox</string>
+    <string name="compose_lab_state_title">State in Compose</string>
+    <string name="compose_lab_stateflow_line">StateFlow counter: %1$d</string>
+    <string name="compose_lab_increment">Increment (StateFlow)</string>
+    <string name="compose_lab_refresh_livedata">Refresh (LiveData)</string>
+    <string name="compose_lab_back">Back</string>
+    <string name="lifecycle_fragment_label">Fragment: %1$s</string>
+
+    <string name="recycler_lab_title">RecyclerView lab</string>
+    <string name="recycler_lab_add_row">Add row</string>
+    <string name="recycler_lab_remove_simple">Remove last simple</string>
+    <string name="recycler_lab_shuffle">Shuffle simple rows</string>
+    <string name="recycler_lab_bump_values">Bump values (payload)</string>
+    <string name="recycler_lab_reset">Reset list</string>
+    <string name="recycler_lab_stress_bind">Simulate slow bind (+4ms on main)</string>
+    <string name="recycler_lab_nested_title">Nested horizontal row (shared RecycledViewPool)</string>
+
+    <string name="recycler_lab_education_title">RecyclerView internals (sketch)</string>
+    <string name="recycler_lab_education_body">Adapter: creates/binds ViewHolders; never do heavy I/O in onBind.\n\nLayoutManager: measures/layouts children; LinearLayoutManager prefetches ahead of scroll by default.\n\nRecycler + RecycledViewPool: detached views become scrap, then recycled by viewType; scrolling reuses without reinflating.\n\nDiffUtil / ListAdapter: computes minimal insert/remove/move so you avoid notifyDataSetChanged.\n\nThis screen measures frame spacing vs ~16.7ms (60 FPS) and ~33ms (30 FPS), and shows pool counts while you scroll.</string>
+
+    <string name="recycler_lab_section_diffutil">DiffUtil, stable IDs, payloads</string>
+    <string name="recycler_lab_row_bind_title">Bind stays cheap when views are pooled</string>
+    <string name="recycler_lab_row_payload_title">Bump values uses DiffUtil payloads</string>
+    <string name="recycler_lab_row_stable_title">Stable IDs help animations &amp; reorder</string>
+    <string name="recycler_lab_section_nested">Nested horizontal + shared pool</string>
+    <string name="recycler_lab_chip_label">Chip %1$d</string>
+    <string name="recycler_lab_dynamic_row_title">Dynamic row #%1$d</string>
+
+    <string name="recycler_lab_metrics_warmup">Collecting frame samples…</string>
+    <string name="recycler_lab_metrics_template">Last Δ: %1$.1f ms · avg: %2$.1f ms\n&gt;16.7ms (~60 FPS budget): %3$d%% · &gt;33ms (~30 FPS budget): %4$d%%</string>
+    <string name="recycler_lab_pool_template">Pool scrap: Edu=%1$d Sec=%2$d Simple=%3$d Nested=%4$d inner@0=%5$d</string>
+    <string name="recycler_lab_scroll_template">Scroll state: %1$s</string>
+    <string name="title_activity_compose_screen">ComposeScreenActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

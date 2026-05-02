@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recycler_lab_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".recyclerlab.RecyclerViewLabActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_recycler_lab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/recycler_lab_title" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_metrics"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_recycler_lab">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/text_frame_metrics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                tools:text="Frame Δ last=15.9ms avg=16.2ms\n>16ms (60Hz budget): 3%  |  >32ms (30Hz budget): 0%" />
+
+            <TextView
+                android:id="@+id/text_pool_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="monospace"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                tools:text="Pool: type1=2 type2=0 …" />
+
+            <TextView
+                android:id="@+id/text_scroll_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="monospace"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                tools:text="Scroll: IDLE" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_actions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
+        android:paddingHorizontal="8dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_metrics">
+
+        <LinearLayout
+            android:id="@+id/row_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add_row"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/recycler_lab_add_row" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_remove_simple"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/recycler_lab_remove_simple" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_shuffle"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/recycler_lab_shuffle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_bump_values"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/recycler_lab_bump_values" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_reset_list"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recycler_lab_reset" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switch_stress_bind"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/recycler_lab_stress_bind"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scroll_actions" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_lab_main"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switch_stress_bind"
+        tools:listitem="@layout/item_recycler_lab_simple_row" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
