@@ -60,6 +60,9 @@
         <activity
             android:name=".compose.ComposeLabActivity"
             android:exported="false" />
+        <activity
+            android:name=".datastorelab.DataStoreLabActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

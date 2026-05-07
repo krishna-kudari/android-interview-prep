@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+// java_package: where the generated Java/Kotlin class is placed.
+// Using a sub-package to avoid clashing with our Kotlin SessionData domain class.
+option java_package = "com.example.interview.datastorelab.proto";
+
+// java_multiple_files = true: each message generates its own .java file.
+// If false, all messages are nested inside a single outer class (java_outer_classname).
+option java_multiple_files = true;
+
+// Interview: Why protobuf for DataStore instead of JSON?
+//
+// 1. Schema-first: this file IS the schema. Every field has a type + field number.
+//    The field NUMBER (not name) is the identity in the binary encoding.
+//    Renaming a field is safe (number stays). Removing a field is safe (number reserved).
+//    This is backwards-compatibility that JSON can't give you without extra tooling.
+//
+// 2. Binary encoding: compact. A boolean takes 1-2 bytes vs "true" (4 bytes in JSON).
+//    A repeated string list has no key repetition overhead.
+//
+// 3. DataStore uses it natively via the Serializer<T> interface:
+//    writeTo() → message.writeTo(outputStream)
+//    readFrom() → MessageType.parseFrom(inputStream)
+//    Both are generated methods on the protobuf message class.
+//
+// 4. Lite variant (option java_multiple_files + "lite" codegen): no reflection API,
+//    ~10× smaller runtime jar than the full protobuf library — critical for Android APK size.
+//
+// 5. Default values in proto3: every field has a zero-default (false, 0, "", []).
+//    Missing fields in binary decode to their zero-default automatically.
+//    No need for @Nullable or null-safety hacks (contrast: Gson + Kotlin data classes).
+
+message SessionProto {
+  // Field numbers are permanent identifiers in the wire format.
+  // NEVER reuse a field number — if you delete field 3, mark it as "reserved 3".
+  // Renaming the field (e.g., auth_token → access_token) is safe — only number matters.
+  bool   is_logged_in      = 1;
+  string user_id           = 2;
+  string auth_token        = 3;
+  string refresh_token     = 4;
+  int64  expires_at_ms     = 5;
+  // repeated = List<String>. Proto3 repeated fields are always packed by default.
+  repeated string roles    = 6;
+  string device_id         = 7;
+  int64  login_timestamp_ms = 8;
+
+  // Example of a nested message (proto equivalent of nested data class)
+  // Demonstrates that proto supports complex nested structures just like @Serializable.
+  DeviceInfo device_info   = 9;
+}
+
+message DeviceInfo {
+  string manufacturer = 1;
+  string model        = 2;
+  int32  sdk_version  = 3;
+  string app_version  = 4;
+}

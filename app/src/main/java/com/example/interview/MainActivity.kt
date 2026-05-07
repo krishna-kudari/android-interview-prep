@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.interview.compose.ComposeLabActivity
+import com.example.interview.datastorelab.DataStoreLabActivity
 import com.example.interview.pulsenews.MainActivity
 import com.example.interview.recyclerlab.RecyclerViewLabActivity
 import com.google.android.material.button.MaterialButton
@@ -36,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<MaterialButton>(R.id.btn_open_coin_watch).setOnClickListener {
             startActivity(Intent(this, com.example.interview.coinwatch.MainActivity::class.java))
+        }
+        findViewById<MaterialButton>(R.id.btn_open_datastore_lab).setOnClickListener {
+            startActivity(Intent(this, DataStoreLabActivity::class.java))
         }
     }
 }

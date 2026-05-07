@@ -14,6 +14,7 @@
     <string name="main_open_compose_lab">Jetpack Compose lab</string>
     <string name="main_open_pulse_news">Pulse News</string>
     <string name="main_open_coin_watch">Coin Watch</string>
+    <string name="main_open_datastore_lab">DataStore Lab</string>
 
     <string name="compose_lab_title">Compose lab</string>
     <string name="compose_lab_intro">NavHost + Material3 theme + ViewModel. Open the state screen to compare StateFlow (collectAsStateWithLifecycle) with LiveData (observeAsState).</string>

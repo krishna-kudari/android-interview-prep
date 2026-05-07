@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.protobuf)
 }
 
 configurations.configureEach {
@@ -126,7 +127,9 @@ dependencies {
     implementation(libs.coil)
 
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.protobuf.javalite)
 
     implementation(libs.timber)
 
@@ -141,4 +144,26 @@ dependencies {
 
 ksp {
     arg("room.schemaLocation", "$projectDir/schemas")
+}
+
+// ── Proto DataStore: generate Java Lite classes from .proto files ─────────────
+// protoc reads app/src/main/proto/*.proto and generates Java source in build/generated.
+// "lite" option produces MessageLite subclasses — smaller binary, no reflection API,
+// suitable for Android where binary size matters.
+// Interview: Proto Lite vs Full:
+//   Full proto → supports reflection, dynamic messages, JSON interop (com.google.protobuf)
+//   Lite proto → no reflection, smaller APK (~10× smaller runtime), used on Android
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${libs.versions.protobufJava.get()}"
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
