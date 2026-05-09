@@ -24,4 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Interview"
 include(":app")
- 
+include(":dsa")
