@@ -47,7 +47,7 @@ kotlinSerialization = "1.11.0"
 
 # ── Protobuf ──
 protobufPlugin = "0.10.0"
-protobufJava = "3.25.4"
+protobufJava = "4.34.1"
 
 # ── Logging ──
 timber = "5.0.1"
