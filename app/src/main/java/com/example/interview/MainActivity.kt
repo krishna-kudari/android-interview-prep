@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.interview.compose.ComposeLabActivity
 import com.example.interview.coroutineslab.CoroutinesLabActivity
+import com.example.interview.stopwatch.StopwatchActivity
 import com.example.interview.datastorelab.DataStoreLabActivity
 import com.example.interview.pulsenews.MainActivity
 import com.example.interview.recyclerlab.RecyclerViewLabActivity
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<MaterialButton>(R.id.btn_open_coroutines_lab).setOnClickListener {
             startActivity(Intent(this, CoroutinesLabActivity::class.java))
+        }
+        findViewById<MaterialButton>(R.id.btn_open_stopwatch).setOnClickListener {
+            startActivity(Intent(this, StopwatchActivity::class.java))
         }
     }
 }

@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Required to start a foreground service -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <!--
+        Required on API 34+ for foregroundServiceType="specialUse".
+        specialUse is the correct type for a stopwatch — no built-in category fits.
+        Using dataSync instead would cause silent runtime termination on apps targeting
+        API 35 due to its new duration limits.
+    -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- Required on API 33+ to post notifications (stopwatch status bar) -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".pulsenews.PulseNewsApplication"
         android:allowBackup="true"
@@ -66,6 +80,27 @@
         <activity
             android:name=".coroutineslab.CoroutinesLabActivity"
             android:exported="false" />
+
+        <!-- ─── Stopwatch ──────────────────────────────────────────────── -->
+        <activity
+            android:name=".stopwatch.StopwatchActivity"
+            android:exported="false" />
+
+        <!--
+            foregroundServiceType="specialUse": correct for a general-purpose stopwatch
+            timer that doesn't fit any Android-defined category (location, camera, etc.).
+
+            The <property> descriptor is reviewed by Google Play at submission time and
+            must describe the actual use case (stopwatch / timer).
+        -->
+        <service
+            android:name=".stopwatch.service.StopwatchForegroundService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="stopwatch_timer" />
+        </service>
     </application>
 
 </manifest>

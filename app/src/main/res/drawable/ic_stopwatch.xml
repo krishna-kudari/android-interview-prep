@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Crown of stopwatch (top bar) -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M9,1h6v2H9z" />
+    <!-- Stem -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M11,3h2v2h-2z" />
+    <!-- Case / circle body -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12,5C7.58,5 4,8.58 4,13C4,17.42 7.58,21 12,21C16.42,21 20,17.42 20,13C20,8.58 16.42,5 12,5ZM12,19C8.69,19 6,16.31 6,13C6,9.69 8.69,7 12,7C15.31,7 18,9.69 18,13C18,16.31 15.31,19 12,19Z" />
+    <!-- Minute hand -->
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12.5,8h-1v5.25l3.87,3.87 0.71,-0.71L12.5,13V8z" />
+</vector>
