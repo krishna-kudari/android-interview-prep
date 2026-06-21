@@ -1,10 +1,20 @@
 package com.example.interview.pulsenews
 
 import android.app.Application
+import com.example.interview.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 @HiltAndroidApp
-class PulseNewsApplication : Application()
+class PulseNewsApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+    }
+}
 
 /**
  * app/

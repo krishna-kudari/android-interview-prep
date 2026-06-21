@@ -10,6 +10,7 @@ import com.example.interview.compose.ComposeLabActivity
 import com.example.interview.coroutineslab.CoroutinesLabActivity
 import com.example.interview.stopwatch.StopwatchActivity
 import com.example.interview.datastorelab.DataStoreLabActivity
+import com.example.interview.eventloggerlab.EventLoggerLabActivity
 import com.example.interview.pulsenews.MainActivity
 import com.example.interview.recyclerlab.RecyclerViewLabActivity
 import com.google.android.material.button.MaterialButton
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<MaterialButton>(R.id.btn_open_stopwatch).setOnClickListener {
             startActivity(Intent(this, StopwatchActivity::class.java))
+        }
+        findViewById<MaterialButton>(R.id.btn_open_event_logger_lab).setOnClickListener {
+            startActivity(Intent(this, EventLoggerLabActivity::class.java))
         }
     }
 }

@@ -134,6 +134,9 @@ dependencies {
 
     implementation(libs.timber)
 
+    implementation(project(":eventlogger"))
+    implementation(libs.androidx.work.runtime.ktx)
+
     testImplementation(libs.bundles.testing.unit)
     androidTestImplementation(libs.bundles.testing.android)
     // Instrumented Compose + Hilt (explicit mirrors common guides / version catalog samples)

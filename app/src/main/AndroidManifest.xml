@@ -80,6 +80,9 @@
         <activity
             android:name=".coroutineslab.CoroutinesLabActivity"
             android:exported="false" />
+        <activity
+            android:name=".eventloggerlab.EventLoggerLabActivity"
+            android:exported="false" />
 
         <!-- ─── Stopwatch ──────────────────────────────────────────────── -->
         <activity
